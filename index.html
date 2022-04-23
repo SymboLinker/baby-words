@@ -1,34 +1,54 @@
-<script>
-	function getRandomInt(min, inclusiveMax) {
-	   return Math.floor(Math.random() * ((inclusiveMax + 1) - min)) + min;
-	}
-	function getRandomElement(arr) {
-	   var index = getRandomInt(0, arr.length - 1);
-	   return arr[index];
-	}
-	
-	var fotos = [ 'auto.jpg',
-		'bloem.jpg',
-		'boom.jpg',
-		'boot.jpg',
-		'broek.jpg',
-		'kat.jpg',
-		'deur.jpg',
-		'fiets.jpg',
-		'hond.jpg',
-		'huis.jpg',
-		'motor.jpg',
-		'muur.jpg',
-		'schoen.jpg',
-		'stoel.jpg',
-		'tafel.jpg',
-		'trap.jpg']
-</script>
-<body style="text-align: center;">
-	<div>
-		<img src="auto.jpg" style="height: 40%" onclick="src=getRandomElement(fotos.filter(x => x != src))" />
-	</div>
-	<div>
-		<img src="schoen.jpg" style="height: 40%" onclick="src=getRandomElement(fotos.filter(x => x != src))" />
-	</div>
-</body>
+<!DOCTYPE html>
+<html>
+	<body style="text-align: center;">
+		<div>
+			<img id="img1" src="auto.jpg" style="height: 40vh" />
+		</div>
+		<div>
+			<img id="img2" src="schoen.jpg" style="height: 40vh" />
+		</div>
+		<input type="button" id="btn1" style="width:8vh; height:8vh; float: left">
+		<input type="button" id="btn2" style="width:8vh; height:8vh; float: right">
+		<script>
+			function getRandomInt(min, inclusiveMax) {
+			   return Math.floor(Math.random() * ((inclusiveMax + 1) - min)) + min;
+			}
+			function getRandomElement(arr) {
+			   var index = getRandomInt(0, arr.length - 1);
+			   return arr[index];
+			}
+			
+			function getFileNameFromPath(str) {
+				return str.split('\\').pop().split('/').pop();
+			}
+			
+			var fotos = [ 'auto.jpg',
+				'bloem.jpg',
+				'boom.jpg',
+				'boot.jpg',
+				'broek.jpg',
+				'kat.jpg',
+				'deur.jpg',
+				'fiets.jpg',
+				'hond.jpg',
+				'huis.jpg',
+				'motor.jpg',
+				'muur.jpg',
+				'schoen.jpg',
+				'stoel.jpg',
+				'tafel.jpg',
+				'trap.jpg'];
+			
+			document.querySelector("#btn1").onclick = () => {
+				let img1 = document.querySelector("#img1");
+				let img2 = document.querySelector("#img2");
+				img1.src=getRandomElement(fotos.filter(x => x != getFileNameFromPath(img1.src) && x != getFileNameFromPath(img2.src)));
+			};
+			document.querySelector("#btn2").onclick = () => {
+				let img1 = document.querySelector("#img1");
+				let img2 = document.querySelector("#img2");
+				img2.src=getRandomElement(fotos.filter(x => x != getFileNameFromPath(img1.src) && x != getFileNameFromPath(img2.src)));
+			};
+		</script>
+	</body>
+</html>
