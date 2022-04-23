@@ -1,0 +1,34 @@
+<script>
+	function getRandomInt(min, inclusiveMax) {
+	   return Math.floor(Math.random() * ((inclusiveMax + 1) - min)) + min;
+	}
+	function getRandomElement(arr) {
+	   var index = getRandomInt(0, arr.length - 1);
+	   return arr[index];
+	}
+	
+	var fotos = [ 'auto.jpg',
+		'bloem.jpg',
+		'boom.jpg',
+		'boot.jpg',
+		'broek.jpg',
+		'kat.jpg',
+		'deur.jpg',
+		'fiets.jpg',
+		'hond.jpg',
+		'huis.jpg',
+		'motor.jpg',
+		'muur.jpg',
+		'schoen.jpg',
+		'stoel.jpg',
+		'tafel.jpg',
+		'trap.jpg']
+</script>
+<body style="text-align: center;">
+	<div>
+		<img src="auto.jpg" style="height: 40%" onclick="src=getRandomElement(fotos.filter(x => x != src))" />
+	</div>
+	<div>
+		<img src="schoen.jpg" style="height: 40%" onclick="src=getRandomElement(fotos.filter(x => x != src))" />
+	</div>
+</body>
